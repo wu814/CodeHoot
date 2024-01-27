@@ -1,6 +1,10 @@
 import './App.css';
-import React from 'react';
-import test from './test.js';
+import { BrowserRouter as Router, Route } from "react-router-dom"
+import Navbar from "./components/Navbar"
+import Home from "./components/Home"
+import Lobby from "./components/Lobby"
+import Question from "./components/Question"
+import Scoreboard from "./components/Scoreboard"
 
 function App() {
   return (
@@ -16,6 +20,16 @@ function App() {
         />
         <button className='startButton'>Let's Code!</button>
       </div>
+      {/* <Router>
+        <div>
+          <Navbar />
+          <Route exact path="/" component={Home} />
+          <Route path="/lobby" component={Lobby} />
+          <Route path="/question" component={Question} />
+          <Route path="/scoreboard" component={Scoreboard} />
+        </div>
+      </Router> */}
+      
     </div>
   );
 }
