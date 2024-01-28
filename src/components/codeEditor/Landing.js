@@ -60,14 +60,14 @@ const actualOutput = ["Hello!\n", "5\n", "465\n"];
 // const querystring = require('querystring');
 
 function decodeBase64(str) {
-  return new Promise((resolve, reject) => {
-    try {
-      const decodedString = atob(str);
-      resolve(decodedString);
-    } catch (error) {
-      reject(error);
-    }
-  });
+    return new Promise((resolve, reject) => {
+        try {
+            const decodedString = atob(str);
+            resolve(decodedString);
+        } catch (error) {
+            reject(error);
+        }
+    });
 }
 
 const Landing = () => {
@@ -144,12 +144,12 @@ const Landing = () => {
         if (status === 429) {
           console.log("too many requests", status);
 
-          showErrorToast(`Quota of 100 requests exceeded for the Day! Please read the blog on freeCodeCamp to learn how to setup your own RAPID API Judge0!`, 10000);
-        }
-        setProcessing(false);
-        console.log("catch block...", error);
-      });
-  };
+                    // showErrorToast(`Quota of 100 requests exceeded for the Day! Please read the blog on freeCodeCamp to learn how to setup your own RAPID API Judge0!`, 10000);
+                }
+                setProcessing(false);
+                console.log("catch block...", error);
+            });
+    };
 
   const checkStatus = async (token) => {
     const options = {
@@ -301,38 +301,43 @@ const Landing = () => {
     });
   };
 
-  return (
-    <>
-      {/* <ToastContainer position='top-right' autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover /> */}
-      {/* <div className='h-4 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500'></div> */}
-      <div className='question-container'>
-        <div className='top-container'>
-          <div className='left-panel'>
-            <div className='px-4 py-2' id='select-language'>
-              <LanguagesDropdown onSelectChange={onSelectChange} />
-            </div>
-            <div className='px-4 py-2' id='theme-change'>
-              <ThemeDropdown handleThemeChange={handleThemeChange} theme={theme} />
-            </div>
-          </div>
-          <div className='top-problem-statement'>
-            <h1 className=' text-3xl border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 bg-white mt-2'>CodeHoot!</h1>
-            <CodeEditorWindow code={problem} onChange={onChange} language={language?.value} theme={theme.value} />
-          </div>
-          <div className='right-top-panel'>
-            <div className='text-container'>
-              <CountDownTimer
-                initialTimeInSeconds={1000} // Set the initial time as needed
-                isRunning={isTimerRunning}
-                onStop={handleTimerStop}
-                onTick={(remainingSeconds) => setRemainingTime(remainingSeconds)}
-              />
-              <button className='overflow-auto focus:outline-none w-full border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white mt-2' onClick={handleSubmit}>
-                Submit
-              </button>
-            </div>
-          </div>
-        </div>
+    return (
+        <>
+            {/* <ToastContainer position='top-right' autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover /> */}
+            {/* <div className='h-4 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500'></div> */}
+            <div className='question-container'>
+                <div className='top-container'>
+                    <div className='left-panel'>
+                        <div className='px-4 py-2' id='select-language'>
+                            <LanguagesDropdown onSelectChange={onSelectChange} />
+                        </div>
+                        <div className='px-4 py-2' id='theme-change'>
+                            <ThemeDropdown handleThemeChange={handleThemeChange} theme={theme} />
+                        </div>
+                    </div>
+                    <div className='top-problem-statement'id="editor" >
+                        <h1 className=' text-3xl border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 bg-white mt-2'>CodeHoot!</h1>
+                        <CodeEditorWindow code={problem} onChange={onChange} language={language?.value} theme={theme.value} />
+
+                        {/* <CodeEditorWindow code={problem} onChange={onChange} language={language?.value} theme={theme.value} /> */}
+                    </div>
+                    <div className='right-top-panel'>
+                        <div className='text-container'>
+                            <CountDownTimer
+                                initialTimeInSeconds={1000} // Set the initial time as needed
+                                isRunning={isTimerRunning}
+                                onStop={handleTimerStop}
+                                onTick={(remainingSeconds) => setRemainingTime(remainingSeconds)}
+                            />
+                            <button
+                                className='overflow-auto focus:outline-none w-full border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white mt-2'
+                                onClick={handleSubmit}
+                            >
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
         <div className='btm-container'>
           <div className='problem-statement'>
