@@ -198,15 +198,15 @@ const Landing = () => {
             } else {
                 setProcessing(false);
                 setOutputDetails(response.data);
-                // console.log("HERE", response.data.stdout);
-                // showSuccessToast(`Compiled Successfully!`);
+                console.log("HERE", response.data.stdout);
+                showSuccessToast(`Compiled Successfully!`);
                 console.log("response.data", response.data);
                 return;
             }
         } catch (err) {
             console.log("err", err);
             setProcessing(false);
-            // showErrorToast();
+            showErrorToast();
         }
     };
 
@@ -220,7 +220,7 @@ const Landing = () => {
         navigate("/scoreboard");
     };
 
-    const handleSubmit = () => {F
+    const handleSubmit = () => {
         // Handle your submit logic here
         // Access remainingTime for the remaining time value
         console.log(`Remaining Time: ${remainingTime} seconds`);
@@ -241,28 +241,28 @@ const Landing = () => {
         defineTheme("oceanic-next").then((_) => setTheme({ value: "oceanic-next", label: "Oceanic Next" }));
     }, []);
 
-    // const showSuccessToast = (msg) => {
-    //     toast.success(msg || `Compiled Successfully!`, {
-    //         position: "top-right",
-    //         autoClose: 1000,
-    //         hideProgressBar: false,
-    //         closeOnClick: true,
-    //         pauseOnHover: true,
-    //         draggable: true,
-    //         progress: undefined,
-    //     });
-    // };
-    // const showErrorToast = (msg, timer) => {
-    //     toast.error(msg || `Something went wrong! Please try again.`, {
-    //         position: "top-right",
-    //         autoClose: timer ? timer : 1000,
-    //         hideProgressBar: false,
-    //         closeOnClick: true,
-    //         pauseOnHover: true,
-    //         draggable: true,
-    //         progress: undefined,
-    //     });
-    // };
+    const showSuccessToast = (msg) => {
+        toast.success(msg || `Compiled Successfully!`, {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    };
+    const showErrorToast = (msg, timer) => {
+        toast.error(msg || `Something went wrong! Please try again.`, {
+            position: "top-right",
+            autoClose: timer ? timer : 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    };
 
     return (
         <>
