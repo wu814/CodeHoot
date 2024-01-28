@@ -1,5 +1,6 @@
 import React from 'react'
 import "./css/Scoreboard.css"
+import UserRank from './UserRank'
 
 const Scoreboard = () => {
   return (
@@ -12,7 +13,7 @@ const Scoreboard = () => {
       <div className='leaderBoard'>
         <p>Leader Board</p>
         <ul className='playerList'> 
-          <li>Player 1: 100</li>
+          <li><UserRank userName={"Shannon"} totalTime={69} /></li>
           <li>Player 2: 90</li>
           <li>Player 3: 80</li>
           <li>Player 4: 70</li>

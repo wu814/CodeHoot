@@ -1,6 +1,6 @@
 import React, {useState, useEffect } from 'react'
 
-const Timer = ({ initialTimeInSeconds }) => {
+const CountDownTimer = ({ initialTimeInSeconds }) => {
 
     const [time, setTime] = useState(initialTimeInSeconds);
     const [outOfTime, setOutOfTime] = useState(false);
@@ -36,4 +36,4 @@ const Timer = ({ initialTimeInSeconds }) => {
     )
 }
 
-export default Timer
+export default CountDownTimer

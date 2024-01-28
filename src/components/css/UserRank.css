@@ -1,0 +1,5 @@
+.userRankRow {
+    display: flex;
+    align-items: space-between;
+    background-color: green;
+}
