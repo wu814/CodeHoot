@@ -48,13 +48,15 @@ const Home = () => {
       <div className="probStatement">Codehoot!</div>
 
       <div className='container'>
-        <input
-          type="text"
-          className="username-input"
-          placeholder="Nickname"
-          ref={messageRef}
-        />
-        <button className='startButton' onClick={handleSubmit}>OK, let's code!</button>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            className="username-input"
+            placeholder="Nickname"
+            ref={messageRef}
+            />
+          <button className='startButton' type="submit">OK, let's code!</button>
+        </form>
 
       </div>
 
