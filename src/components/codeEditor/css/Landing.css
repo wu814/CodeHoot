@@ -46,7 +46,7 @@
     background-color: #45a3e5 ;
 }
 
-.top-problem-statement div {
+.top-problem-statement #editor {
     height: 30vh;
 }
 
