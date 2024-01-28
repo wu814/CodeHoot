@@ -1,6 +1,8 @@
 import React from 'react'
 // import { useHistory } from "react-router-dom"
 import "./css/Home.css"
+import { Link } from 'react-router-dom'
+
 
 const Home = () => {
   // const history = useHistory();
@@ -10,19 +12,20 @@ const Home = () => {
   //   history.push("/test");
   // }
   return (
-      <div className="Home">
-        <h1>Welcome to Codehoot!</h1>
-        <div className="probStatement">Click start whenever everyone is ready. Who doth comeout triumphant over their peers?</div>
-  
-        <div className='container'>
-          <input
-            type="text"
-            className="username-input"
-            placeholder="username"
-          />
-          <button className='startButton'>Let's Code!</button>
-        </div>
+    <div className="Home">
+      <h1>Welcome to Codehoot!</h1>
+      <div className="probStatement">Click start whenever everyone is ready. Who doth comeout triumphant over their peers?</div>
+
+      <div className='container'>
+        <input
+          type="text"
+          className="username-input"
+          placeholder="username"
+        />
+        <Link to="/question" className='startButton'>Let's Code!</Link>
+
       </div>
+    </div>
   )
 }
 
