@@ -20,7 +20,6 @@ function App() {
           </Routes>
         </div>
       </>
-      <h1>Welcome to CodeHoot</h1>
 
     </div>
   );
