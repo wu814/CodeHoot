@@ -1,5 +1,15 @@
 .userRankRow {
     display: flex;
-    align-items: space-between;
-    background-color: green;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80vw;
+    height: 5vh;
+}
+
+.name {
+    margin-left: 5vw;
+}
+
+.time {
+    margin-right: 5vw;
 }
