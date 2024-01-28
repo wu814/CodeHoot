@@ -43,6 +43,7 @@ const Home = () => {
         <input type="text" ref={messageRef} />
         <button type="submit">Send</button>
       </form>
+
     </div>
   )
 }
