@@ -26,15 +26,7 @@ const Question = () => {
 
   return (
     <div>
-      <div className='timerAndSubmit'>
-        <CountDownTimer
-          initialTimeInSeconds={10} // Set the initial time as needed
-          isRunning={isTimerRunning}
-          onStop={handleTimerStop}
-          onTick={(remainingSeconds) => setRemainingTime(remainingSeconds)}
-        />
-        <button className="submitButton" onClick={handleSubmit}>Submit</button>
-      </div>
+      
 
       <Landing />
     </div>
