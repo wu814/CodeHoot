@@ -78,14 +78,14 @@ const actualOutput = "Hello!\n";
 // const querystring = require('querystring');
 
 function decodeBase64(str) {
-  return new Promise((resolve, reject) => {
-    try {
-      const decodedString = atob(str);
-      resolve(decodedString);
-    } catch (error) {
-      reject(error);
-    }
-  });
+    return new Promise((resolve, reject) => {
+        try {
+            const decodedString = atob(str);
+            resolve(decodedString);
+        } catch (error) {
+            reject(error);
+        }
+    });
 }
 
 const Landing = () => {
@@ -160,7 +160,7 @@ const Landing = () => {
                 if (status === 429) {
                     console.log("too many requests", status);
 
-                    showErrorToast(`Quota of 100 requests exceeded for the Day! Please read the blog on freeCodeCamp to learn how to setup your own RAPID API Judge0!`, 10000);
+                    // showErrorToast(`Quota of 100 requests exceeded for the Day! Please read the blog on freeCodeCamp to learn how to setup your own RAPID API Judge0!`, 10000);
                 }
                 setProcessing(false);
                 console.log("catch block...", error);
@@ -181,13 +181,12 @@ const Landing = () => {
             let response = await axios.request(options);
             const decodedString = await decodeBase64(response.data.stdout);
 
-      if (decodedString == actualOutput) {
-        console.log("STRINGS MATCH");
-      } else {
-        console.log("STRINGS DO NOT MATCH");
-
-      }
-      let statusId = response.data.status?.id;
+            if (decodedString == actualOutput) {
+                console.log("STRINGS MATCH");
+            } else {
+                console.log("STRINGS DO NOT MATCH");
+            }
+            let statusId = response.data.status?.id;
 
             // Processed - we have a result
             if (statusId === 1 || statusId === 2) {
@@ -200,14 +199,14 @@ const Landing = () => {
                 setProcessing(false);
                 setOutputDetails(response.data);
                 // console.log("HERE", response.data.stdout);
-        showSuccessToast(`Compiled Successfully!`);
+                // showSuccessToast(`Compiled Successfully!`);
                 console.log("response.data", response.data);
                 return;
             }
         } catch (err) {
             console.log("err", err);
             setProcessing(false);
-            showErrorToast();
+            // showErrorToast();
         }
     };
 
@@ -221,7 +220,7 @@ const Landing = () => {
         navigate("/scoreboard");
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = () => {F
         // Handle your submit logic here
         // Access remainingTime for the remaining time value
         console.log(`Remaining Time: ${remainingTime} seconds`);
@@ -242,28 +241,28 @@ const Landing = () => {
         defineTheme("oceanic-next").then((_) => setTheme({ value: "oceanic-next", label: "Oceanic Next" }));
     }, []);
 
-    const showSuccessToast = (msg) => {
-        toast.success(msg || `Compiled Successfully!`, {
-            position: "top-right",
-            autoClose: 1000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-    };
-    const showErrorToast = (msg, timer) => {
-        toast.error(msg || `Something went wrong! Please try again.`, {
-            position: "top-right",
-            autoClose: timer ? timer : 1000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-    };
+    // const showSuccessToast = (msg) => {
+    //     toast.success(msg || `Compiled Successfully!`, {
+    //         position: "top-right",
+    //         autoClose: 1000,
+    //         hideProgressBar: false,
+    //         closeOnClick: true,
+    //         pauseOnHover: true,
+    //         draggable: true,
+    //         progress: undefined,
+    //     });
+    // };
+    // const showErrorToast = (msg, timer) => {
+    //     toast.error(msg || `Something went wrong! Please try again.`, {
+    //         position: "top-right",
+    //         autoClose: timer ? timer : 1000,
+    //         hideProgressBar: false,
+    //         closeOnClick: true,
+    //         pauseOnHover: true,
+    //         draggable: true,
+    //         progress: undefined,
+    //     });
+    // };
 
     return (
         <>
@@ -291,7 +290,10 @@ const Landing = () => {
                                 onStop={handleTimerStop}
                                 onTick={(remainingSeconds) => setRemainingTime(remainingSeconds)}
                             />
-                            <button className='overflow-auto focus:outline-none w-full border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white mt-2' onClick={handleSubmit}>
+                            <button
+                                className='overflow-auto focus:outline-none w-full border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white mt-2'
+                                onClick={handleSubmit}
+                            >
                                 Submit
                             </button>
                         </div>

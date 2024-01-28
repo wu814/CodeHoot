@@ -33,20 +33,20 @@ const Question = (playerName) => {
     }
   }
 
-  const handleTimerStop = (remainingSeconds) => {
-    setTimerRunning(false);
-    setRemainingTime(remainingSeconds);
-    updateScores(remainingSeconds);
+  // const handleTimerStop = (remainingSeconds) => {
+  //   setTimerRunning(false);
+  //   setRemainingTime(remainingSeconds);
+  //   updateScores(remainingSeconds);
 
-    navigate('/scoreboard');
-  };
+  //   navigate('/scoreboard');
+  // };
 
-  const handleSubmit = () => {
-    // Handle your submit logic here
-    // Access remainingTime for the remaining time value
-    console.log(`Remaining Time: ${remainingTime} seconds`);
-    handleTimerStop(remainingTime); // Pass the remaining time back to the timer
-  };
+  // const handleSubmit = () => {
+  //   // Handle your submit logic here
+  //   // Access remainingTime for the remaining time value
+  //   console.log(`Remaining Time: ${remainingTime} seconds`);
+  //   handleTimerStop(remainingTime); // Pass the remaining time back to the timer
+  // };
 
   return (
     <div>
