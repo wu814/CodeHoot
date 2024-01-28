@@ -32,8 +32,7 @@ import { currNameID } from "../Home";
 
 
 const problemDefault = `/** This is where we load the problem **/
-// Print out the word "hello" 10 times using a for-loop
-// Hint: use the loop skeleton below`;
+// Print out the word "Hello!" `;
 
 const testcode = [`
 # *Problem 1
@@ -206,13 +205,16 @@ const Landing = () => {
     const updateScores = async (remainingSeconds) => {
         try {
             const querySnapshot = await getDocs(ref);
-            
+            console.log(currNameID)
             querySnapshot.forEach((docu) => {
+                console.log(docu.id)
                 if (docu.id == currNameID) {
+                    console.log("c")
                     const docRef = doc(ref, docu.id); 
                     updateDoc(docRef, {
                         score: docu.data().score + remainingSeconds,
                     });
+                    console.log(remainingSeconds);
                 }
           });
           
@@ -224,6 +226,7 @@ const Landing = () => {
   const handleTimerStop = (remainingSeconds) => {
     setTimerRunning(false);
     setRemainingTime(remainingSeconds);
+    // console.log(remainingSeconds);
         updateScores(remainingSeconds);
 
     navigate("/scoreboard");

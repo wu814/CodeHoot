@@ -62,7 +62,7 @@ const Home = () => {
         }
     }, [gameStarted]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(messageRef.current.value);
 
@@ -72,7 +72,8 @@ const Home = () => {
         };
 
         try {
-            addDoc(ref, data);
+            const docRef = await addDoc(ref, data);
+            currNameID = docRef.id;
         } catch (err) {
             console.log(err);
         }
