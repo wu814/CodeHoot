@@ -37,7 +37,7 @@ const problemDefault = `/** This is where we load the problem **/
 const testcode = [`
 # *Problem 1
 
-# Print out the word "Hello" 10 times using a for-loop
+# Print out the word "Hello!"
 # Hint: use the loop skeleton below
 `,
   `
