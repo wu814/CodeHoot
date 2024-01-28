@@ -31,8 +31,9 @@ import { currNameID } from "../Home";
 
 
 
-const problemDefault = `/** This is where we load the problem **/
-// Print out the word "Hello!" `;
+
+const problemDefault = `\n\nThis is where you code the solution.\n \nChoose over 40+ languages and good luck!\n\n`;
+
 
 const testcode = [`
 # *Problem 1
@@ -72,8 +73,8 @@ function decodeBase64(str) {
 
 const Landing = () => {
   const probSel = currQuestion;
-  const [code, setCode] = useState(testcode[probSel]);
-  const [problem, setProblem] = useState(problemDefault);
+  const [code, setCode] = useState(problemDefault);
+  const [problem, setProblem] = useState(testcode[probSel]);
 
   const [customInput, setCustomInput] = useState("");
   const [outputDetails, setOutputDetails] = useState(null);
