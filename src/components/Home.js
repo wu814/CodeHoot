@@ -7,6 +7,7 @@ import { firestore } from "../firebase_setup/firebase";
 import { Link } from "react-router-dom";
 import "./css/Home.css";
 export var currNameID = "";
+export var currQuestion = 0;
 
 const Home = () => {
     const [gameStarted, setGameStarted] = useState(false);
@@ -27,7 +28,7 @@ const Home = () => {
             navigate("/scoreboard");
             setTimeout(() => {
                 // Transition to the Question component after 5 seconds in Scoreboard component
-
+                currQuestion = 1;
                 navigate("/question");
                 setTimeout(() => {
                     // Transition to the Scoreboard component after 10 seconds
@@ -35,13 +36,14 @@ const Home = () => {
                     navigate("/scoreboard");
                     setTimeout(() => {
                         // Transition to the Question component after 5 seconds in Scoreboard component
+                        currQuestion = 2;
 
                         navigate("/question");
                         setTimeout(() => {
                             // Transition to the Leaderboard component after 10 seconds
 
                             // LEADERBOARD!
-                            navigate("/scoreboard");
+                            navigate("/leaderboard");
                         }, 10000);
                     }, 5000);
                     // 20 seconds in Question component
@@ -105,7 +107,6 @@ const Home = () => {
                     </button>
                 </form>
             </div>
-            <button onClick={fetchData}>Fetch</button>
         </div>
     );
 };
