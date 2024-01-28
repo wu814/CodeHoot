@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Route } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import Navbar from "./components/Navbar"
 import Home from "./components/Home"
 import Lobby from "./components/Lobby"
@@ -22,11 +22,12 @@ function App() {
       </div>
       {/* <Router>
         <div>
-          <Navbar />
-          <Route exact path="/" component={Home} />
-          <Route path="/lobby" component={Lobby} />
-          <Route path="/question" component={Question} />
-          <Route path="/scoreboard" component={Scoreboard} />
+          <Routes>
+            <Route path="/" component={Home} />
+            <Route path="/lobby" component={Lobby} />
+            <Route path="/question" component={Question} />
+            <Route path="/scoreboard" component={Scoreboard} />
+          </Routes>
         </div>
       </Router> */}
       
