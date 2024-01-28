@@ -1,9 +1,12 @@
 import React from 'react'
 import "./css/Question.css"
+import Landing from "./codeEditor/Landing";
 
 const Question = () => {
   return (
-    <div>Question</div>
+    <div>
+      <Landing />
+    </div>
   )
 }
 
