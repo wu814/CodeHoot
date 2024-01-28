@@ -20,6 +20,9 @@ import { useNavigate } from "react-router-dom";
 import CountDownTimer from "../CountDownTimer";
 
 import "./css/Landing.css";
+import { compareOutputs } from "./outputUtils";
+// import { unescape } from "querystring";
+// import querystring from 'querystring';
 
 const javascriptDefault = `/**
 * Problem: Binary Search: Search a sorted array for a target value.
@@ -70,8 +73,23 @@ const testcode = `/**
  */
 `;
 
+const actualOutput = "Hello!\n";
+
+// const querystring = require('querystring');
+
+function decodeBase64(str) {
+  return new Promise((resolve, reject) => {
+    try {
+      const decodedString = atob(str);
+      resolve(decodedString);
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
+
 const Landing = () => {
-    const [code, setCode] = useState(javascriptDefault);
+    const [code, setCode] = useState(testcode);
     const [problem, setProblem] = useState(problemDefault);
 
     const [customInput, setCustomInput] = useState("");
@@ -161,7 +179,15 @@ const Landing = () => {
         };
         try {
             let response = await axios.request(options);
-            let statusId = response.data.status?.id;
+            const decodedString = await decodeBase64(response.data.stdout);
+
+      if (decodedString == actualOutput) {
+        console.log("STRINGS MATCH");
+      } else {
+        console.log("STRINGS DO NOT MATCH");
+
+      }
+      let statusId = response.data.status?.id;
 
             // Processed - we have a result
             if (statusId === 1 || statusId === 2) {
@@ -173,7 +199,8 @@ const Landing = () => {
             } else {
                 setProcessing(false);
                 setOutputDetails(response.data);
-                showSuccessToast(`Compiled Successfully!`);
+                // console.log("HERE", response.data.stdout);
+        showSuccessToast(`Compiled Successfully!`);
                 console.log("response.data", response.data);
                 return;
             }
