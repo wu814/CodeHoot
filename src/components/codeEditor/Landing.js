@@ -15,6 +15,9 @@ import CustomInput from "./CustomInput";
 import OutputDetails from "./OutputDetails";
 import ThemeDropdown from "./ThemeDropdown";
 import LanguagesDropdown from "./LanguagesDropdown";
+import { compareOutputs } from "./outputUtils";
+// import { unescape } from "querystring";
+// import querystring from 'querystring';
 
 const javascriptDefault = `/**
 * Problem: Binary Search: Search a sorted array for a target value.
@@ -60,7 +63,22 @@ const testcode = `/**
 /**
  * Replace yoru code here!
  */
-`
+`;
+
+const actualOutput = "Hello!\n";
+
+// const querystring = require('querystring');
+
+function decodeBase64(str) {
+  return new Promise((resolve, reject) => {
+    try {
+      const decodedString = atob(str);
+      resolve(decodedString);
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
 
 const Landing = () => {
 
@@ -159,6 +177,14 @@ const Landing = () => {
     };
     try {
       let response = await axios.request(options);
+      const decodedString = await decodeBase64(response.data.stdout);
+
+      if (decodedString == actualOutput) {
+        console.log("STRINGS MATCH");
+      } else {
+        console.log("STRINGS DO NOT MATCH");
+
+      }
       let statusId = response.data.status?.id;
 
       // Processed - we have a result
@@ -171,6 +197,7 @@ const Landing = () => {
       } else {
         setProcessing(false);
         setOutputDetails(response.data);
+        // console.log("HERE", response.data.stdout);
         showSuccessToast(`Compiled Successfully!`);
         console.log("response.data", response.data);
         return;
@@ -235,7 +262,7 @@ const Landing = () => {
         pauseOnHover
       />
 
-      
+
 
       <div className="h-4 w-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500"></div>
       <div className="flex flex-row">
