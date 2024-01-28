@@ -142,8 +142,12 @@
 
 .far-right-panel #output-details div p{
     color: black;
-   justify-self: center;
-   font-size: larger;
+    justify-self: center;
+    font-size: larger;
+    /* background-color: #ff7eb3; */
+    background: linear-gradient(to right, #8977ba, #504b6e);
+    font-weight: 600;
+    text-align: center;
 }
 
 .far-right-panel #output-details div span{
