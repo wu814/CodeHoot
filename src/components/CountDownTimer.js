@@ -1,39 +1,48 @@
 import React, {useState, useEffect } from 'react'
 
-const CountDownTimer = ({ initialTimeInSeconds }) => {
+const CountDownTimer = ({ initialTimeInSeconds, isRunning, onStop, onTick }) => {
+  const [time, setTime] = useState(initialTimeInSeconds);
+  const [outOfTime, setOutOfTime] = useState(false);
 
-    const [time, setTime] = useState(initialTimeInSeconds);
-    const [outOfTime, setOutOfTime] = useState(false);
+  useEffect(() => {
+    let timer;
 
-    useEffect(() => {
-      const timer = setInterval(() => {
+    if (isRunning) {
+      timer = setInterval(() => {
         if (time > 0) {
-          setTime((prevTime) => prevTime - 1);
-        }
-        else{
+          setTime((prevTime) => {
+            if (onTick) {
+              onTick(prevTime);
+            }
+            return prevTime - 1;
+          });
+        } else {
           setOutOfTime(true);
+          clearInterval(timer);
+          if (onStop) {
+            onStop(time); // Pass the remaining time back to the parent component
+          }
         }
-        
       }, 1000);
-    
-        // Cleanup the interval when the component is unmounted
-        return () => clearInterval(timer);
-      }, [time]);
-    
-      const formatTime = (seconds) => {
-        const minutes = Math.floor(seconds / 60);
-        const remainingSeconds = seconds % 60;
-        return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
-      }
+    }
 
-    return (
+    return () => clearInterval(timer);
+  }, [isRunning, time, onStop, onTick]);
+
+  const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+  };
+
+  return (
+    <div>
       <div>
-        <div>
-          <p>Time Remaining: {formatTime(time)}</p>
-          {outOfTime && <p>Time's up!</p>}
-        </div>
+        <p>Time Remaining: {formatTime(time)}</p>
+        {outOfTime && <p>Time's up!</p>}
       </div>
-    )
-}
+    </div>
+  );
+};
 
-export default CountDownTimer
+export default CountDownTimer;

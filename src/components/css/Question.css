@@ -1,0 +1,7 @@
+.timerAndSubmit {
+    display: flex;
+    justify-content: space-between;
+    font-size: 2em;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
