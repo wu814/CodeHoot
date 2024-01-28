@@ -13,8 +13,8 @@ const Home = () => {
   // }
   return (
     <div className="Home">
-      <h1>Welcome to Codehoot!</h1>
-      <div className="probStatement">Click start whenever everyone is ready. Who doth comeout triumphant over their peers?</div>
+      {/* <h1>Welcome to Codehoot!</h1> */}
+      <div className="probStatement">Codehoot</div>
 
       <div className='container'>
         <input
