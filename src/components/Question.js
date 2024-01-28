@@ -50,8 +50,6 @@ const Question = (playerName) => {
 
   return (
     <div>
-      
-
       <Landing />
     </div>
   );

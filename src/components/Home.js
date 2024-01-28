@@ -6,6 +6,7 @@ import { addDoc, collection, getDocs } from "@firebase/firestore";
 import { firestore } from "../firebase_setup/firebase";
 import { Link } from "react-router-dom";
 import "./css/Home.css";
+export var currNameID = "";
 
 const Home = () => {
     const [gameStarted, setGameStarted] = useState(false);
