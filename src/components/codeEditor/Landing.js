@@ -21,7 +21,7 @@ import { useNavigate } from "react-router-dom";
 import CountDownTimer from "../CountDownTimer";
 
 import "./css/Landing.css";
-import { compareOutputs } from "./outputUtils";
+// import { compareOutputs } from "./outputUtils";
 // import { unescape } from "querystring";
 // import querystring from 'querystring';
 import { addDoc, collection, doc, getDocs, updateDoc,  } from "@firebase/firestore"
@@ -55,6 +55,8 @@ for i in range(10):
 `
 ];
 
+const probSel = 0;
+
 const actualOutput = ["Hello!\n", "5\n", "465\n"];
 
 // const querystring = require('querystring');
@@ -72,7 +74,7 @@ function decodeBase64(str) {
 
 const Landing = () => {
   const probSel = 0;
-  const [code, setCode] = useState(testcode[1]);
+  const [code, setCode] = useState(testcode[probSel]);
   const [problem, setProblem] = useState(problemDefault);
 
   const [customInput, setCustomInput] = useState("");
@@ -165,8 +167,8 @@ const Landing = () => {
       let response = await axios.request(options);
       const decodedString = await decodeBase64(response.data.stdout);
       console.log("decodedString", decodedString);
-      console.log("actualOutput[2]", actualOutput[1]);
-      if (decodedString == actualOutput[1]) {
+      console.log("actualOutput[2]", actualOutput[probSel]);
+      if (decodedString == actualOutput[probSel]) {
         console.log("STRINGS MATCH");
         navigate('../scoreboard');
       } else {
@@ -232,6 +234,7 @@ const Landing = () => {
         // Handle your submit logic here
         // Access remainingTime for the remaining time value
         handleTimerStop(remainingTime); // Pass the remaining time back to the timer
+        
     };
 
     function handleThemeChange(th) {
