@@ -2,14 +2,19 @@ import React, {useEffect, useState} from 'react'
 import "./css/Question.css"
 import Landing from "./codeEditor/Landing"
 import CountDownTimer from "./CountDownTimer"
+import { useNavigate } from 'react-router-dom';
+
 
 const Question = () => {
   const [isTimerRunning, setTimerRunning] = useState(true);
   const [remainingTime, setRemainingTime] = useState(0);
+  const navigate = useNavigate();
+
 
   const handleTimerStop = (remainingSeconds) => {
     setTimerRunning(false);
     setRemainingTime(remainingSeconds);
+    navigate('/scoreboard');
   };
 
   const handleSubmit = () => {
@@ -23,7 +28,7 @@ const Question = () => {
     <div>
       <div className='timerAndSubmit'>
         <CountDownTimer
-          initialTimeInSeconds={60} // Set the initial time as needed
+          initialTimeInSeconds={10} // Set the initial time as needed
           isRunning={isTimerRunning}
           onStop={handleTimerStop}
           onTick={(remainingSeconds) => setRemainingTime(remainingSeconds)}
