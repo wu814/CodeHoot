@@ -59,8 +59,6 @@ const Home = () => {
         </form>
 
       </div>
-      <button onClick={fetchData}>Fetch</button>
-
     </div>
   )
 }
