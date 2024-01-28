@@ -30,6 +30,10 @@ const Scoreboard = () => {
     }    
   }
   useEffect(() => {
+    fetchData()
+  }, [])
+
+  useEffect(() => {
     sortPlayerList(playerList)
   }, [playerList])
 
@@ -39,7 +43,6 @@ const Scoreboard = () => {
       <div className='header'>
         <h1>Scoreboard</h1> 
       </div>
-      <button onClick={fetchData}>reload</button>
       <div className='leaderBoard'>
         <ul className='playerList'> 
           {sortedPlayerList.slice(0,5).map((player, index) => (
