@@ -329,7 +329,7 @@ const Landing = () => {
                     <div className='right-top-panel'>
                         <div className='text-container'>
                             <CountDownTimer
-                                initialTimeInSeconds={1000} // Set the initial time as needed
+                                initialTimeInSeconds={20} // Set the initial time as needed
                                 isRunning={isTimerRunning}
                                 onStop={handleTimerStop}
                                 onTick={(remainingSeconds) => setRemainingTime(remainingSeconds)}
