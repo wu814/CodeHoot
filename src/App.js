@@ -5,6 +5,7 @@ import Home from "./components/Home"
 import Lobby from "./components/Lobby"
 import Question from "./components/Question"
 import Scoreboard from "./components/Scoreboard"
+import Leaderboard from "./components/Leaderboard"
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/lobby" element={<Lobby/>} />
             <Route path="/question" element={<Question/>} />
             <Route path="/scoreboard" element={<Scoreboard/>} />
+            <Route path="/leaderboard" element={<Leaderboard/>} />
           </Routes>
         </div>
       </>
