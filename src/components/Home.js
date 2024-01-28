@@ -5,7 +5,7 @@ import { firestore } from "../firebase_setup/firebase"
 import { addDoc, collection, getDocs } from "@firebase/firestore"
 import { useNavigate } from 'react-router-dom';
 
-
+export var currNameID = "";
 
 const Home = () => {
 
@@ -14,9 +14,8 @@ const Home = () => {
   const navigate = useNavigate();
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(messageRef.current.value)
     
     let data = {
       name: messageRef.current.value,
@@ -24,7 +23,8 @@ const Home = () => {
     }
 
     try {
-      addDoc(ref, data)
+      const docRef = await addDoc(ref, data);
+      currNameID = docRef.id;
     } catch(err) {
       console.log(err)
     }    

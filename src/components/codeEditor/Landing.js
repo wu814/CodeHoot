@@ -23,6 +23,10 @@ import "./css/Landing.css";
 import { compareOutputs } from "./outputUtils";
 // import { unescape } from "querystring";
 // import querystring from 'querystring';
+import { addDoc, collection, doc, getDocs, updateDoc,  } from "@firebase/firestore"
+import { firestore } from "../../firebase_setup/firebase"
+import { currNameID } from "../Home";
+
 
 const javascriptDefault = `/**
 * Problem: Binary Search: Search a sorted array for a target value.
@@ -214,17 +218,37 @@ const Landing = () => {
     const [isTimerRunning, setTimerRunning] = useState(true);
     const [remainingTime, setRemainingTime] = useState(0);
     const navigate = useNavigate();
+    const ref = collection(firestore, "names")
+
+    const updateScores = async (remainingSeconds) => {
+        try {
+            const querySnapshot = await getDocs(ref);
+            
+            querySnapshot.forEach((docu) => {
+                if (docu.id == currNameID) {
+                    const docRef = doc(ref, docu.id); 
+                    updateDoc(docRef, {
+                        score: docu.data().score + remainingSeconds,
+                    });
+                }
+          });
+          
+        } catch (error) {
+          console.error('Error getting documents: ', error);
+        }
+      }
 
     const handleTimerStop = (remainingSeconds) => {
         setTimerRunning(false);
         setRemainingTime(remainingSeconds);
+        updateScores(remainingSeconds);
+
         navigate("/scoreboard");
     };
 
     const handleSubmit = () => {
         // Handle your submit logic here
         // Access remainingTime for the remaining time value
-        console.log(`Remaining Time: ${remainingTime} seconds`);
         handleTimerStop(remainingTime); // Pass the remaining time back to the timer
     };
 
