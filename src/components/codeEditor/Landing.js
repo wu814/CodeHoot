@@ -315,9 +315,11 @@ const Landing = () => {
                             <ThemeDropdown handleThemeChange={handleThemeChange} theme={theme} />
                         </div>
                     </div>
-                    <div className='top-problem-statement'>
+                    <div className='top-problem-statement'id="editor" >
                         <h1 className=' text-3xl border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 bg-white mt-2'>CodeHoot!</h1>
                         <CodeEditorWindow code={problem} onChange={onChange} language={language?.value} theme={theme.value} />
+
+                        {/* <CodeEditorWindow code={problem} onChange={onChange} language={language?.value} theme={theme.value} /> */}
                     </div>
                     <div className='right-top-panel'>
                         <div className='text-container'>
