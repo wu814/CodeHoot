@@ -50,15 +50,29 @@ console.log(binarySearch(arr, target));
 
 const problemDefault = `/** This is where we load the problem **/`;
 
-const Landing = () => {
-    const [code, setCode] = useState(javascriptDefault);
-    const [problem, setProblem] = useState(problemDefault);
 
-    const [customInput, setCustomInput] = useState("");
-    const [outputDetails, setOutputDetails] = useState(null);
-    const [processing, setProcessing] = useState(null);
-    const [theme, setTheme] = useState("cobalt");
-    const [language, setLanguage] = useState(languageOptions[0]);
+const testcode = `/**
+
+*This is problem 1
+*/
+
+// Print out the word "hello" 10 times using a for-loop
+// Hint: use the loop skeleton below
+
+// for()
+
+/**
+ * Replace yoru code here!
+ */
+`
+
+const Landing = () => {
+  const [code, setCode] = useState(javascriptDefault);
+  const [customInput, setCustomInput] = useState("");
+  const [outputDetails, setOutputDetails] = useState(null);
+  const [processing, setProcessing] = useState(null);
+  const [theme, setTheme] = useState("cobalt");
+  const [language, setLanguage] = useState(languageOptions[0]);
 
     const enterPress = useKeyPress("Enter");
     const ctrlPress = useKeyPress("Control");
@@ -216,7 +230,7 @@ const Landing = () => {
                         </div>
                     </div>
                     <div className='top-problem-statement'>
-                        <CodeEditorWindow code={problem} onChange={onChange} language={language?.value} theme={theme.value} />
+                        <CodeEditorWindow code={problemDefault} onChange={onChange} language={language?.value} theme={theme.value} />
                     </div>
                     <div className='right-top-panel'>
                         <p>Right Panel</p>
