@@ -17,6 +17,7 @@ import ThemeDropdown from "./ThemeDropdown";
 import LanguagesDropdown from "./LanguagesDropdown";
 import { useNavigate } from "react-router-dom";
 
+import { currQuestion } from "../Home";
 
 import CountDownTimer from "../CountDownTimer";
 
@@ -71,7 +72,7 @@ function decodeBase64(str) {
 }
 
 const Landing = () => {
-  const probSel = 0;
+  const probSel = currQuestion;
   const [code, setCode] = useState(testcode[probSel]);
   const [problem, setProblem] = useState(problemDefault);
 
