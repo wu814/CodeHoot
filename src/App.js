@@ -5,6 +5,7 @@ import Home from "./components/Home"
 import Lobby from "./components/Lobby"
 import Question from "./components/Question"
 import Scoreboard from "./components/Scoreboard"
+import Timer from "./components/Timer"
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
           </Routes>
         </div>
       </Router> */}
-      
+      <Timer initialTimeInSeconds={100} />
     </div>
   );
 }
