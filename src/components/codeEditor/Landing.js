@@ -46,8 +46,28 @@ const target = 5;
 console.log(binarySearch(arr, target));
 `;
 
+
+const testcode = `/**
+
+*This is problem 1
+*/
+
+// Print out the word "hello" 10 times using a for-loop
+// Hint: use the loop skeleton below
+
+// for()
+
+/**
+ * Replace yoru code here!
+ */
+`
+
 const Landing = () => {
-  const [code, setCode] = useState(javascriptDefault);
+
+  // This is where the `deafult` code will be shown to the user
+  // Essentialy the prompt for the studnet to solve
+
+  const [code, setCode] = useState(testcode);
   const [customInput, setCustomInput] = useState("");
   const [outputDetails, setOutputDetails] = useState(null);
   const [processing, setProcessing] = useState(null);
@@ -111,6 +131,7 @@ const Landing = () => {
       .catch((err) => {
         let error = err.response ? err.response.data : err;
         // get error status
+        console.log(err.response.status);
         let status = err.response.status;
         console.log("status", status);
         if (status === 429) {

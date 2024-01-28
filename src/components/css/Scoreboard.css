@@ -17,7 +17,7 @@
     justify-content: center;
     font-size: 5em;
     background-color: white;
-    width: 45vw;
+    width: 100vw;
     margin-bottom: 20vh;
 }
 
@@ -42,5 +42,10 @@
     width: 80vw;
     height: 40vh;
     padding-bottom: 5vh;
+    padding-top: 3vh;
+}
+
+.playerList li :hover{
+    background-color: royalblue;
 }
 
