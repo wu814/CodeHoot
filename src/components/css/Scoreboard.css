@@ -1,0 +1,18 @@
+* {
+    background: rgb(49, 89, 175);
+}
+
+.main {
+    background-color: white;
+}
+.header h1 {
+    font-size: 5em;
+    background-color: white;
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+.leaderBoard {
+    background-color: rgb(221, 210, 210);
+    width: 50vw;
+    height: 500px;
+}
