@@ -1,45 +1,57 @@
-html,
-body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.probStatement {
-    font-family: 'Lobster', cursive;
-    font-size: 120px;
-    color: #000000;
-}
-
-.container {
+.Home {
+    background: rgb(56, 18, 114);
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
-}
-
-.startButton {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    font-family: 'Lobster', cursive;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.username-input {
-    padding: 10px;
-    font-size: 16px;
+    justify-content: center;
+    height: 100vh;
+    user-select: none; 
+    cursor: default;
+    }
+  
+  .probStatement {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: white; 
+  }
+  
+  .container {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 16px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 288px;
+    height: 150px;
+  }
+  
+  .username-input {
+    width: 100%;
+    height: 45px;
+    padding: 5px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    outline: none;
-}
-
-.username-input::placeholder {
-    color: #aaa;
-}
+    text-align: center;
+  }
+  
+  .startButton {
+    width: 100%;
+    height: 45px;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+  }
+  
+  .startButton:hover {
+    background-color: #333;
+  }
+  
