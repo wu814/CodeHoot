@@ -37,7 +37,7 @@ const problemDefault = `/** This is where we load the problem **/
 const testcode = [`
 # *Problem 1
 
-# Print out the word "hello" 10 times using a for-loop
+# Print out the word "Hello" 10 times using a for-loop
 # Hint: use the loop skeleton below
 `,
   `
@@ -54,8 +54,6 @@ for i in range(10):
 # For example, an example output should just be one number (i.e. 10) not more than one
 `
 ];
-
-const probSel = 0;
 
 const actualOutput = ["Hello!\n", "5\n", "465\n"];
 
