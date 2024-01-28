@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
 
-  const messageRef = useRef()
+  const messageRef = useRef(null)
   const ref = collection(firestore, "names")
   const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ const Home = () => {
       addDoc(ref, data)
     } catch(err) {
       console.log(err)
-    }
+    }    
     navigate('/question');
   }
 
@@ -59,12 +59,6 @@ const Home = () => {
         </form>
 
       </div>
-
-      <form onSubmit={handleSubmit}>
-        <input type="text" ref={messageRef} />
-        <button type="submit">Send</button>
-      </form>
-
       <button onClick={fetchData}>Fetch</button>
 
     </div>
