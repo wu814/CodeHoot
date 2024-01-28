@@ -1,0 +1,117 @@
+.question-container {
+    background-color: white;
+    /* height: 40vh; */
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.top-container {
+    height: 40vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.left-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+
+}
+
+.top-problem-statement {
+    width: 50vw;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+}
+
+
+
+
+
+
+
+
+
+.btm-container {
+    height: 60vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+    width: 28vw;
+    /* padding: 10px; */
+    align-items: center;
+
+}
+
+.right-panel #output-window h1 {
+    /* height: 30vh;
+    margin-bottom: 30px; */
+    color: black;
+    width: 25vw;
+
+    
+}
+
+.right-panel #output-window div {
+    width: 25vw;
+    height: 30vh;
+    /* background-color: rgb(59 130 246 / 0.5); */
+}
+
+.right-panel #custom-input {
+    width: 25vw;
+}
+
+.right-panel #output-details div{
+    width: 25vw;
+    display: flex;
+    align-content: center;
+}
+
+.far-right-panel #output-details div{
+    width: 10vw;
+    height: 60vh;
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-self: center;
+
+   
+}
+
+.far-right-panel #output-details div p{
+    color: black;
+   justify-self: center;
+   font-size: larger;
+}
+
+.far-right-panel #output-details div span{
+    color: black;
+   
+}
+
+
+.problem-statement #editor-window {
+    width: 60vw;
+    padding: 20px;
+    height: 100%;
+    
+}
