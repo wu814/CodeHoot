@@ -15,8 +15,14 @@ import CustomInput from "./CustomInput";
 import OutputDetails from "./OutputDetails";
 import ThemeDropdown from "./ThemeDropdown";
 import LanguagesDropdown from "./LanguagesDropdown";
+import { useNavigate } from "react-router-dom";
+
+import CountDownTimer from "../CountDownTimer";
 
 import "./css/Landing.css";
+import { compareOutputs } from "./outputUtils";
+// import { unescape } from "querystring";
+// import querystring from 'querystring';
 
 const javascriptDefault = `/**
 * Problem: Binary Search: Search a sorted array for a target value.
@@ -48,8 +54,9 @@ const target = 5;
 console.log(binarySearch(arr, target));
 `;
 
-const problemDefault = `/** This is where we load the problem **/`;
-
+const problemDefault = `/** This is where we load the problem **/
+// Print out the word "hello" 10 times using a for-loop
+// Hint: use the loop skeleton below`;
 
 const testcode = `/**
 
@@ -64,15 +71,32 @@ const testcode = `/**
 /**
  * Replace yoru code here!
  */
-`
+`;
+
+const actualOutput = "Hello!\n";
+
+// const querystring = require('querystring');
+
+function decodeBase64(str) {
+  return new Promise((resolve, reject) => {
+    try {
+      const decodedString = atob(str);
+      resolve(decodedString);
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
 
 const Landing = () => {
-  const [code, setCode] = useState(javascriptDefault);
-  const [customInput, setCustomInput] = useState("");
-  const [outputDetails, setOutputDetails] = useState(null);
-  const [processing, setProcessing] = useState(null);
-  const [theme, setTheme] = useState("cobalt");
-  const [language, setLanguage] = useState(languageOptions[0]);
+    const [code, setCode] = useState(testcode);
+    const [problem, setProblem] = useState(problemDefault);
+
+    const [customInput, setCustomInput] = useState("");
+    const [outputDetails, setOutputDetails] = useState(null);
+    const [processing, setProcessing] = useState(null);
+    const [theme, setTheme] = useState("cobalt");
+    const [language, setLanguage] = useState(languageOptions[0]);
 
     const enterPress = useKeyPress("Enter");
     const ctrlPress = useKeyPress("Control");
@@ -155,7 +179,15 @@ const Landing = () => {
         };
         try {
             let response = await axios.request(options);
-            let statusId = response.data.status?.id;
+            const decodedString = await decodeBase64(response.data.stdout);
+
+      if (decodedString == actualOutput) {
+        console.log("STRINGS MATCH");
+      } else {
+        console.log("STRINGS DO NOT MATCH");
+
+      }
+      let statusId = response.data.status?.id;
 
             // Processed - we have a result
             if (statusId === 1 || statusId === 2) {
@@ -167,7 +199,8 @@ const Landing = () => {
             } else {
                 setProcessing(false);
                 setOutputDetails(response.data);
-                showSuccessToast(`Compiled Successfully!`);
+                // console.log("HERE", response.data.stdout);
+        showSuccessToast(`Compiled Successfully!`);
                 console.log("response.data", response.data);
                 return;
             }
@@ -176,6 +209,23 @@ const Landing = () => {
             setProcessing(false);
             showErrorToast();
         }
+    };
+
+    const [isTimerRunning, setTimerRunning] = useState(true);
+    const [remainingTime, setRemainingTime] = useState(0);
+    const navigate = useNavigate();
+
+    const handleTimerStop = (remainingSeconds) => {
+        setTimerRunning(false);
+        setRemainingTime(remainingSeconds);
+        navigate("/scoreboard");
+    };
+
+    const handleSubmit = () => {
+        // Handle your submit logic here
+        // Access remainingTime for the remaining time value
+        console.log(`Remaining Time: ${remainingTime} seconds`);
+        handleTimerStop(remainingTime); // Pass the remaining time back to the timer
     };
 
     function handleThemeChange(th) {
@@ -230,10 +280,21 @@ const Landing = () => {
                         </div>
                     </div>
                     <div className='top-problem-statement'>
-                        <CodeEditorWindow code={problemDefault} onChange={onChange} language={language?.value} theme={theme.value} />
+                        <h1 className=' text-3xl border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 bg-white mt-2'>CodeHoot!</h1>
+                        <CodeEditorWindow code={problem} onChange={onChange} language={language?.value} theme={theme.value} />
                     </div>
                     <div className='right-top-panel'>
-                        <p>Right Panel</p>
+                        <div className='text-container'>
+                            <CountDownTimer
+                                initialTimeInSeconds={1000} // Set the initial time as needed
+                                isRunning={isTimerRunning}
+                                onStop={handleTimerStop}
+                                onTick={(remainingSeconds) => setRemainingTime(remainingSeconds)}
+                            />
+                            <button className='overflow-auto focus:outline-none w-full border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white mt-2' onClick={handleSubmit}>
+                                Submit
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -245,7 +306,7 @@ const Landing = () => {
                     </div>
                     <div className='right-panel'>
                         <div id='output-window'>
-                            <OutputWindow outputDetails={outputDetails}  />
+                            <OutputWindow outputDetails={outputDetails} />
                         </div>
                         <div id='custom-input'>
                             <CustomInput customInput={customInput} setCustomInput={setCustomInput} />

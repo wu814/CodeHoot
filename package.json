@@ -1,6 +1,7 @@
 {
   "private": true,
   "dependencies": {
+    "@firebase/firestore": "^4.4.1",
     "@monaco-editor/react": "^4.4.4",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
@@ -48,6 +49,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",
+    "node-polyfill-webpack-plugin": "^3.0.0",
     "postcss": "^8.4.13",
     "tailwindcss": "^3.0.24"
   }

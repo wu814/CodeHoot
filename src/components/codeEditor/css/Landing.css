@@ -1,7 +1,12 @@
 .question-container {
-    background-color: white;
+    /* background: linear-gradient(to right, #6441A5, #2a0845); Colors and direction can be adjusted */
+    /* background: radial-gradient(circle, #6441A5, #2a0845); Circular radial gradient */
+    background: linear-gradient(to right, #ff6e7f, #bfe9ff); /*From pink to light blue*/
+    /* background: radial-gradient(circle, #ff758c 40%, #ff7eb3 100%); Pink to a deeper pink */
+
     /* height: 40vh; */
     width: 100vw;
+    height: 100%;
     display: flex;
     flex-direction: column;
 
@@ -26,7 +31,7 @@
 
 .top-problem-statement {
     width: 50vw;
-    height: 30vh;
+    height: 40vh;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -34,9 +39,41 @@
     align-content: center;
 }
 
+.top-problem-statement h1 {
+    width: 20vw;
+    text-align: center;
+    font-size: xx-large;
+    background-color: #45a3e5 ;
+}
+
+.top-problem-statement div {
+    height: 30vh;
+}
 
 
+.right-top-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: space-around;
+}
+.right-top-panel .text-container {
+    display: flex;
+    height: 40vh;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: space-around;
+}
+.right-top-panel .text-container div {
+    background-color: #ffd700;
+    font-weight: 500;
+}
 
+
+.right-top-panel .text-container button {
+    background-color: #FF0000;
+    font-weight: 500;
+}
 
 
 
@@ -79,6 +116,12 @@
     width: 25vw;
 }
 
+.right-panel #custom-compile button {
+    background-color: #4CD964;
+    font-weight: 500;
+
+}
+
 .right-panel #output-details div{
     width: 25vw;
     display: flex;
@@ -99,8 +142,12 @@
 
 .far-right-panel #output-details div p{
     color: black;
-   justify-self: center;
-   font-size: larger;
+    justify-self: center;
+    font-size: larger;
+    /* background-color: #ff7eb3; */
+    background: linear-gradient(to right, #8977ba, #504b6e);
+    font-weight: 600;
+    text-align: center;
 }
 
 .far-right-panel #output-details div span{
