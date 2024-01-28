@@ -6,7 +6,7 @@ import Timer from "./Timer";
 const Question = () => {
   return (
     <div>
-      <Timer initialTimeInSeconds={10} />
+      {/* <Timer initialTimeInSeconds={10} /> */}
       <Landing />
     </div>
   )
