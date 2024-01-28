@@ -3,11 +3,15 @@ import React, {useState, useEffect } from 'react'
 const Timer = ({ initialTimeInSeconds }) => {
 
     const [time, setTime] = useState(initialTimeInSeconds);
+    const [outOfTime, setOutOfTime] = useState(false);
 
     useEffect(() => {
       const timer = setInterval(() => {
         if (time > 0) {
           setTime((prevTime) => prevTime - 1);
+        }
+        else{
+          setOutOfTime(true);
         }
         
       }, 1000);
@@ -25,8 +29,8 @@ const Timer = ({ initialTimeInSeconds }) => {
     return (
       <div>
         <div>
-          <h1>Countdown Timer</h1>
           <p>Time Remaining: {formatTime(time)}</p>
+          {outOfTime && <p>Time's up!</p>}
         </div>
       </div>
     )
