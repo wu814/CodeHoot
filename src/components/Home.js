@@ -3,12 +3,16 @@ import "./css/Home.css"
 import { Link } from 'react-router-dom'
 import { firestore } from "../firebase_setup/firebase"
 import { addDoc, collection, getDocs } from "@firebase/firestore"
+import { useNavigate } from 'react-router-dom';
+
 
 
 const Home = () => {
 
   const messageRef = useRef()
   const ref = collection(firestore, "names")
+  const navigate = useNavigate();
+
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -24,8 +28,7 @@ const Home = () => {
     } catch(err) {
       console.log(err)
     }
-
-    messageRef.current.value = ""
+    navigate('/question');
   }
 
   const fetchData = async () => {
@@ -49,8 +52,9 @@ const Home = () => {
           type="text"
           className="username-input"
           placeholder="Nickname"
+          ref={messageRef}
         />
-        <Link to="/question" className='startButton'>OK, let's code!</Link>
+        <button className='startButton' onClick={handleSubmit}>OK, let's code!</button>
 
       </div>
 
