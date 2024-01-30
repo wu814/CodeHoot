@@ -44,14 +44,14 @@ const Home = () => {
 
                             // LEADERBOARD!
                             navigate("/leaderboard");
-                        }, 10000);
+                        }, 120000);
                     }, 5000);
                     // 20 seconds in Question component
-                }, 10000);
-                // 10 seconds in Scoreboard component
+                }, 120000);
+                // 5 seconds in Scoreboard component
             }, 5000);
             // 20 seconds in Question component
-        }, 10000);
+        }, 120000);
         // 20 seconds before starting the game
     };
 

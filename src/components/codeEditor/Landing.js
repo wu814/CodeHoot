@@ -32,7 +32,7 @@ import { currNameID } from "../Home";
 
 
 
-const problemDefault = `\n\nThis is where you code the solution.\n \nChoose over 40+ languages and good luck!\n\n`;
+const problemDefault = `#This is where you code the solution. \n#Choose over 40+ languages and good luck!\n\n`;
 
 
 const testcode = [`
@@ -169,7 +169,7 @@ const Landing = () => {
       console.log("actualOutput[2]", actualOutput[probSel]);
       if (decodedString == actualOutput[probSel]) {
         console.log("STRINGS MATCH");
-        navigate('../scoreboard');
+        // navigate('../scoreboard');
       } else {
         console.log("STRINGS DO NOT MATCH");
 
@@ -329,7 +329,7 @@ const Landing = () => {
                     <div className='right-top-panel'>
                         <div className='text-container'>
                             <CountDownTimer
-                                initialTimeInSeconds={20} // Set the initial time as needed
+                                initialTimeInSeconds={120} // Set the initial time as needed
                                 isRunning={isTimerRunning}
                                 onStop={handleTimerStop}
                                 onTick={(remainingSeconds) => setRemainingTime(remainingSeconds)}
